@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #android-ocr
 * * *
 
@@ -44,4 +44,5 @@ One of the jar files in the android/libs directory (google-api-translate-java-0.
 =======
 # ocr-app
 Android OCR Application
->>>>>>> 9ab3f9889e30ce611a9095222db4ce56ad166e6e
+
+Fork of android-ocr by RTheis to be adapted for Android SQL injection demo. 
