@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Austen\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-5684f48f70376bf4a9e0996ca90acb9042abca62.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\build\intermediates\pre-dexed\debug\classes-fbb729d7578ebc5c4d06ca8eacfadd26f6a49f57.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-325cf589f348060bda9e16062e45f301a7b1c5a6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\libs\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7a4ecfae9f4b637acb47ef2d18cbc74e91135454">
+        <dex dex="C:\Users\Austen\Documents\GitHub\android-tesseract-ocr1\app\build\intermediates\pre-dexed\debug\classes-96976ac7fe88ab846fbf945ca13d58e709372713.jar" />
+    </item>
+
+</items>
