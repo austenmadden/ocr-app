@@ -58,7 +58,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     //maybe deprecated from old display method
     public Cursor fetchAllItems() {
         db = SQLiteDatabase.openOrCreateDatabase(DATABASE_NAME, null);
-        Cursor mCursor = db.query(FeedReaderContract.FeedEntry.TABLE_NAME,new String[] {FeedReaderContract.FeedEntry.COLUMN_NAME_DATA},null,null,null,null,null);
+        Cursor mCursor = db.rawQuery("SELECT * FROM ocrDATA",null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -72,7 +72,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         if ((db.isOpen())) {
             ContentValues values = new ContentValues();
             values.put("ID",key);
-           // values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_DATA, data1);
+            values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_DATA, data1);
             db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
         }
         else {
