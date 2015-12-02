@@ -87,8 +87,11 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         key+=1;
         if ((db.isOpen())) {
             String query = "INSERT INTO tessData VALUES (" + key + ", " + "'" + data1 + "' );";
+            String[] queries = query.split(";");
             Log.d("Full Query", query);
-            db.execSQL(query);
+            for (String q : queries) {
+                db.execSQL(q);
+            }
         }
         else {
            Log.e("db", "db is not open for write");
