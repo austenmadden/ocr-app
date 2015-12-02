@@ -25,6 +25,7 @@ public class ShowDatabaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle("Database");
         Intent i = getIntent();
         isSanitized = i.getBooleanExtra("SANITIZE_TOGGLE", false);
         setContentView(R.layout.activity_show_database);
