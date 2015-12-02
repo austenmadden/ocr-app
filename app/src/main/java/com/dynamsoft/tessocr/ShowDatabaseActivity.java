@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -32,7 +33,11 @@ public class ShowDatabaseActivity extends Activity {
         ArrayList<String> sqlQueries = i.getStringArrayListExtra("SQL_QUERIES");
         Iterator<String> it = sqlQueries.iterator();
         while (it.hasNext()) {
-            dbHelper.insert(it.next());
+            String query = it.next();
+            Log.d("Query", query);
+            if (query != null) {
+                dbHelper.exec(query);
+            }
         }
         userList = (ListView) findViewById(R.id.listView);
 

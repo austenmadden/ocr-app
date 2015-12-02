@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.util.Log;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -58,7 +59,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     //maybe deprecated from old display method
     public Cursor fetchAllItems() {
         db = SQLiteDatabase.openOrCreateDatabase(DATABASE_NAME, null);
-        Cursor mCursor = db.rawQuery("SELECT * FROM ocrDATA",null);
+        Cursor mCursor = db.rawQuery("SELECT * FROM tessData",null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -76,7 +77,21 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
             db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
         }
         else {
-            System.out.print("db is not open for write");
+            Log.e("db", "db is not open for write");
+        }
+        db.close();
+    }
+
+    public void exec(String data1) {
+        db = SQLiteDatabase.openOrCreateDatabase(DATABASE_NAME, null);
+        key+=1;
+        if ((db.isOpen())) {
+            String query = "INSERT INTO tessData VALUES (" + key + ", " + "'" + data1 + "' );";
+            Log.d("Full Query", query);
+            db.execSQL(query);
+        }
+        else {
+           Log.e("db", "db is not open for write");
         }
         db.close();
     }

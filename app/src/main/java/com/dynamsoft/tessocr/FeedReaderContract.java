@@ -11,7 +11,7 @@ public final class FeedReaderContract {
 
     //define table contents, table name, and column names
     public static abstract class FeedEntry implements BaseColumns {
-        public static final String TABLE_NAME="ocrData";
+        public static final String TABLE_NAME="tessData";
         public static final String COLUMN_NAME_DATA="data";
     }
     //statements to create the table, and delete the table

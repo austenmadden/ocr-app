@@ -196,6 +196,14 @@ public class OCRActivity extends Activity implements OnClickListener {
 		int photoH = bmOptions.outHeight;
 
 		// Determine how much to scale down the image
+		Log.w("Scale targetW", Integer.toString(targetW));
+		Log.w("Scale targetH", Integer.toString(targetH));
+		Log.w("Scale photoW", Integer.toString(photoW));
+		Log.w("Scale phototH", Integer.toString(photoH));
+
+		if (targetH == 0) {
+			targetH = 1000;
+		}
 		int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
 
 		// Decode the image file into a Bitmap sized to fill the View
