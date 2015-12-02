@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ShowDatabaseActivity extends Activity {
 
@@ -22,11 +23,17 @@ public class ShowDatabaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
         setContentView(R.layout.activity_show_database);
         dbHelper = new FeedReaderDbHelper(this);
         dbHelper.insert("hello world");
         dbHelper.insert("Goodbye world");
         dbHelper.insert("Peace out world");
+        ArrayList<String> sqlQueries = i.getStringArrayListExtra("SQL_QUERIES");
+        Iterator<String> it = sqlQueries.iterator();
+        while (it.hasNext()) {
+            dbHelper.insert(it.next());
+        }
         userList = (ListView) findViewById(R.id.listView);
 
     }

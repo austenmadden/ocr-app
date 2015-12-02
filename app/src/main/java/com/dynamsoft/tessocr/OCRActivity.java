@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Activity;
@@ -38,6 +39,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 	private ImageView mImage;
 	private Button mButtonGallery, mButtonCamera,mButtonDatabase;
 	private String mCurrentPhotoPath;
+	private ArrayList<String> mSqlQueries = new ArrayList<>();
 	private static final int REQUEST_TAKE_PHOTO = 1;
 	private static final int REQUEST_PICK_PHOTO = 2;
 	/**
@@ -227,6 +229,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 
 	private void showDatabase() {
 		Intent intent = new Intent(this,ShowDatabaseActivity.class);
+		intent.putStringArrayListExtra("SQL_QUERIES", mSqlQueries);
 		startActivity(intent);
 
 	}
@@ -260,7 +263,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 						// TODO Auto-generated method stub
 						if (result != null && !result.equals("")) {
 							mResult.setText(result);
-
+							mSqlQueries.add(result);
 						}
 
 						mProgressDialog.dismiss();
