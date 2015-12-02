@@ -2,46 +2,46 @@
 <items version="2" >
 
     <item
-        jar="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-fe7652c4d5b4f6269199a41eb53e39bdd35aa8b4.jar" />
-    </item>
-    <item
-        jar="/home/lyndis/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-33338a0c63e67f7ecc806d47b0d936583c0e813a.jar" />
-    </item>
-    <item
-        jar="/home/lyndis/class/infosec/ocr-app/app/libs/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="7a4ecfae9f4b637acb47ef2d18cbc74e91135454">
-        <dex dex="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/pre-dexed/debug/classes-57e5964ed7d66a91523c328981edac41010880e6.jar" />
-    </item>
-    <item
-        jar="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/pre-dexed/debug/classes-da2fd10a79eaa4118846826306bb5ee1e26c0f5e.jar" />
-    </item>
-    <item
-        jar="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/pre-dexed/debug/classes-2c0d882d616837948f3458041eaca5bad9b79b2f.jar" />
-    </item>
-    <item
-        jar="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars/classes.jar"
+        jar="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="/home/lyndis/class/infosec/ocr-app/app/build/intermediates/pre-dexed/debug/classes-f37c0370a0a8b3fdb0e3e94e891d137abc8c668f.jar" />
+        <dex dex="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\pre-dexed\debug\classes-0a4a0bdffaa74aba58ed4f9854f7114e02e7b304.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\ocr-app\app\libs\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7a4ecfae9f4b637acb47ef2d18cbc74e91135454">
+        <dex dex="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\pre-dexed\debug\classes-c94a0f745e5d37102acd3ab72c1f80d3cf376190.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-a04fbfdb4747c5925613eb21b99b1a5df8f2ab59.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-6f7c257a8cc554f0d150d9c133e7ebfd85df335a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\pre-dexed\debug\classes-3c9d8d599e4632a62613a79bb6f1fe0d955db8c8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\Austen\Documents\GitHub\ocr-app\app\build\intermediates\pre-dexed\debug\classes-a1a4fe739b387dd479aa41d24dae1b1db8abb0de.jar" />
     </item>
 
 </items>

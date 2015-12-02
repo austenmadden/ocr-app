@@ -2,20 +2,24 @@ package com.dynamsoft.tessocr;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -59,6 +63,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 		// ATTENTION: This was auto-generated to implement the App Indexing API.
 		// See https://g.co/AppIndexing/AndroidStudio for more information.
 		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+		copyAssets();
 	}
 
 	private void uriOCR(Uri uri) {
@@ -255,6 +260,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 						// TODO Auto-generated method stub
 						if (result != null && !result.equals("")) {
 							mResult.setText(result);
+
 						}
 
 						mProgressDialog.dismiss();
@@ -306,5 +312,53 @@ public class OCRActivity extends Activity implements OnClickListener {
 		);
 		AppIndex.AppIndexApi.end(client, viewAction);
 		client.disconnect();
+	}
+
+	private void copyAssets() {
+		AssetManager assetManager = getAssets();
+		String[] files = null;
+		try {
+			files = assetManager.list("");
+		} catch (IOException e) {
+			Log.e("tag", "Failed to get asset file list.", e);
+		}
+		if (files != null) for (String filename : files) {
+			if(filename.startsWith("eng.")) {
+				InputStream in = null;
+				OutputStream out = null;
+				try {
+					in = assetManager.open(filename);
+					String path = Environment.getExternalStorageDirectory() + "/tesseract/tessdata/";
+					File outFile = new File(path, filename);
+					out = new FileOutputStream(outFile);
+					copyFile(in, out);
+					Log.d("AssetCopier", path + filename);
+				} catch (IOException e) {
+					Log.e("tag", "Failed to copy asset file: " + filename, e);
+				} finally {
+					if (in != null) {
+						try {
+							in.close();
+						} catch (IOException e) {
+							// NOOP
+						}
+					}
+					if (out != null) {
+						try {
+							out.close();
+						} catch (IOException e) {
+							// NOOP
+						}
+					}
+				}
+			}
+		}
+	}
+	private void copyFile(InputStream in, OutputStream out) throws IOException {
+		byte[] buffer = new byte[1024];
+		int read;
+		while((read = in.read(buffer)) != -1){
+			out.write(buffer, 0, read);
+		}
 	}
 }
