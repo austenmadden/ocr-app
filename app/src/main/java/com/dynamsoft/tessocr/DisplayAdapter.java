@@ -16,17 +16,17 @@ import java.util.ArrayList;
 public class DisplayAdapter extends BaseAdapter{
     private Context mContext;
     private ArrayList<String> data;
-    private ArrayList<String> id;
+
 
     public DisplayAdapter(Context c, ArrayList<String> inData,ArrayList<String> inId) {
         this.mContext = c;
         this.data=inData;
-        this.id=inId;
+
     }
 
     public int getCount() {
         // TODO Auto-generated method stub
-        return id.size();
+        return data.size();
     }
 
     public Object getItem(int position) {
@@ -46,20 +46,18 @@ public class DisplayAdapter extends BaseAdapter{
             layoutinflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             child = layoutinflater.inflate(R.layout.listcell, null);
             mHolder = new Holder();
-            mHolder.txt_id = (TextView) child.findViewById(R.id.txt_id);
             mHolder.txt_data = (TextView) child.findViewById(R.id.txt_data);
 
             child.setTag(mHolder);
         }else {
             mHolder = (Holder) child.getTag();
         }
-        mHolder.txt_id.setText(id.get(pos));
         mHolder.txt_data.setText(data.get(pos));
 
         return child;
         }
     public class Holder {
-        TextView txt_id;
+
         TextView txt_data;
     }
 }

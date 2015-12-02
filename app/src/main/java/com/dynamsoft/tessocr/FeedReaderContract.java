@@ -13,7 +13,6 @@ public final class FeedReaderContract {
     public static abstract class FeedEntry implements BaseColumns {
         public static final String TABLE_NAME="ocrData";
         public static final String COLUMN_NAME_DATA="data";
-
     }
     //statements to create the table, and delete the table
     private static final String TEXT_TYPE ="TEXT";

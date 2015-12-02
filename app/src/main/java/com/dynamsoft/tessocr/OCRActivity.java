@@ -23,15 +23,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 public class OCRActivity extends Activity implements OnClickListener {
 	private TessOCR mTessOCR;
 	private TextView mResult;
 	private ProgressDialog mProgressDialog;
 	private ImageView mImage;
-	private Button mButtonGallery, mButtonCamera;
+	private Button mButtonGallery, mButtonCamera,mButtonDatabase;
 	private String mCurrentPhotoPath;
 	private static final int REQUEST_TAKE_PHOTO = 1;
 	private static final int REQUEST_PICK_PHOTO = 2;
+	/**
+	 * ATTENTION: This was auto-generated to implement the App Indexing API.
+	 * See https://g.co/AppIndexing/AndroidStudio for more information.
+	 */
+	private GoogleApiClient client;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +53,12 @@ public class OCRActivity extends Activity implements OnClickListener {
 		mButtonGallery.setOnClickListener(this);
 		mButtonCamera = (Button) findViewById(R.id.bt_camera);
 		mButtonCamera.setOnClickListener(this);
+		mButtonDatabase = (Button) findViewById(R.id.bt_db);
+		mButtonDatabase.setOnClickListener(this);
 		mTessOCR = new TessOCR();
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 	}
 
 	private void uriOCR(Uri uri) {
@@ -70,7 +84,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 			}
 		}
 	}
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -153,8 +167,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 		if (requestCode == REQUEST_TAKE_PHOTO
 				&& resultCode == Activity.RESULT_OK) {
 			setPic();
-		}
-		else if (requestCode == REQUEST_PICK_PHOTO
+		} else if (requestCode == REQUEST_PICK_PHOTO
 				&& resultCode == Activity.RESULT_OK) {
 			Uri uri = data.getData();
 			if (uri != null) {
@@ -194,17 +207,27 @@ public class OCRActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		int id = v.getId();
 		switch (id) {
-		case R.id.bt_gallery:
-			pickPhoto();
-			break;
-		case R.id.bt_camera:
-			takePhoto();
-			break;
+			case R.id.bt_gallery:
+				pickPhoto();
+				break;
+			case R.id.bt_camera:
+				takePhoto();
+				break;
+			case R.id.bt_db:
+				showDatabase();
+				break;
+
 		}
 	}
-	
+
+	private void showDatabase() {
+		Intent intent = new Intent(this,ShowDatabaseActivity.class);
+		startActivity(intent);
+
+	}
+
 	private void pickPhoto() {
-		Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+		Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 		startActivityForResult(intent, REQUEST_PICK_PHOTO);
 	}
 
@@ -216,11 +239,10 @@ public class OCRActivity extends Activity implements OnClickListener {
 		if (mProgressDialog == null) {
 			mProgressDialog = ProgressDialog.show(this, "Processing",
 					"Doing OCR...", true);
-		}
-		else {
+		} else {
 			mProgressDialog.show();
 		}
-		
+
 		new Thread(new Runnable() {
 			public void run() {
 
@@ -240,7 +262,49 @@ public class OCRActivity extends Activity implements OnClickListener {
 
 				});
 
-			};
+			}
+
+			;
 		}).start();
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		client.connect();
+		Action viewAction = Action.newAction(
+				Action.TYPE_VIEW, // TODO: choose an action type.
+				"OCR Page", // TODO: Define a title for the content shown.
+				// TODO: If you have web page content that matches this app activity's content,
+				// make sure this auto-generated web page URL is correct.
+				// Otherwise, set the URL to null.
+				Uri.parse("http://host/path"),
+				// TODO: Make sure this auto-generated app deep link URI is correct.
+				Uri.parse("android-app://com.dynamsoft.tessocr/http/host/path")
+		);
+		AppIndex.AppIndexApi.start(client, viewAction);
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		Action viewAction = Action.newAction(
+				Action.TYPE_VIEW, // TODO: choose an action type.
+				"OCR Page", // TODO: Define a title for the content shown.
+				// TODO: If you have web page content that matches this app activity's content,
+				// make sure this auto-generated web page URL is correct.
+				// Otherwise, set the URL to null.
+				Uri.parse("http://host/path"),
+				// TODO: Make sure this auto-generated app deep link URI is correct.
+				Uri.parse("android-app://com.dynamsoft.tessocr/http/host/path")
+		);
+		AppIndex.AppIndexApi.end(client, viewAction);
+		client.disconnect();
 	}
 }

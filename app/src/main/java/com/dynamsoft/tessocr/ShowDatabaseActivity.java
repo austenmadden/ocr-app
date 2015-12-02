@@ -30,6 +30,7 @@ public class ShowDatabaseActivity extends Activity {
         dbHelper = new FeedReaderDbHelper(this);
 
     }
+    @Override
     protected void onResume() {
         displayData();
         super.onResume();
