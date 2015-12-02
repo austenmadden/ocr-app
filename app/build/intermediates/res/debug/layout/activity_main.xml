@@ -38,11 +38,20 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show db"
+        android:text="Exec SQL"
         android:id="@+id/bt_db"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/bt_camera"
         android:layout_toEndOf="@+id/bt_camera" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sanitize"
+        android:id="@+id/bt_toggle"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/bt_db"
+        android:layout_toEndOf="@+id/bt_db" />
 
 </RelativeLayout>
 <!-- From: file:/C:/Users/Austen/Documents/GitHub/ocr-app/app/src/main/res/layout/activity_main.xml -->

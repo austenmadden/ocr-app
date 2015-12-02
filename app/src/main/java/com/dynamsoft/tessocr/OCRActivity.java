@@ -25,8 +25,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -38,7 +40,9 @@ public class OCRActivity extends Activity implements OnClickListener {
 	private ProgressDialog mProgressDialog;
 	private ImageView mImage;
 	private Button mButtonGallery, mButtonCamera,mButtonDatabase;
+	private ToggleButton mToggle;
 	private String mCurrentPhotoPath;
+	private boolean isSanitized = false;
 	private ArrayList<String> mSqlQueries = new ArrayList<>();
 	private static final int REQUEST_TAKE_PHOTO = 1;
 	private static final int REQUEST_PICK_PHOTO = 2;
@@ -61,6 +65,16 @@ public class OCRActivity extends Activity implements OnClickListener {
 		mButtonCamera.setOnClickListener(this);
 		mButtonDatabase = (Button) findViewById(R.id.bt_db);
 		mButtonDatabase.setOnClickListener(this);
+		mToggle = (ToggleButton) findViewById(R.id.bt_toggle);
+		mToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					isSanitized = true;
+				} else {
+					isSanitized = false;
+				}
+			}
+		});
 		mTessOCR = new TessOCR();
 		// ATTENTION: This was auto-generated to implement the App Indexing API.
 		// See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -238,6 +252,7 @@ public class OCRActivity extends Activity implements OnClickListener {
 	private void showDatabase() {
 		Intent intent = new Intent(this,ShowDatabaseActivity.class);
 		intent.putStringArrayListExtra("SQL_QUERIES", mSqlQueries);
+		intent.putExtra("SANITIZE_TOGGLE", isSanitized);
 		startActivity(intent);
 
 	}

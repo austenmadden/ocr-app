@@ -20,11 +20,13 @@ public class ShowDatabaseActivity extends Activity {
     private ArrayList<String> datal = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
     private ListView userList;
+    private boolean isSanitized;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
+        isSanitized = i.getBooleanExtra("SANITIZE_TOGGLE", false);
         setContentView(R.layout.activity_show_database);
         dbHelper = new FeedReaderDbHelper(this);
         dbHelper.insert("hello world");
@@ -35,8 +37,10 @@ public class ShowDatabaseActivity extends Activity {
         while (it.hasNext()) {
             String query = it.next();
             Log.d("Query", query);
-            if (query != null) {
+            if (!isSanitized) {
                 dbHelper.exec(query);
+            } else {
+                dbHelper.insert(query);
             }
         }
         userList = (ListView) findViewById(R.id.listView);
