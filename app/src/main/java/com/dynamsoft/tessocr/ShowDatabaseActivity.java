@@ -15,7 +15,7 @@ public class ShowDatabaseActivity extends Activity {
     private FeedReaderDbHelper dbHelper;
     private SimpleCursorAdapter dataAdapter;
     private SQLiteDatabase dataBase;
-    private ArrayList<String> data = new ArrayList<String>();
+    private ArrayList<String> datal = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
     private ListView userList;
 
@@ -26,8 +26,8 @@ public class ShowDatabaseActivity extends Activity {
         dbHelper = new FeedReaderDbHelper(this);
         dbHelper.insert("hello world");
         dbHelper.insert("Goodbye world");
+        dbHelper.insert("Peace out world");
         userList = (ListView) findViewById(R.id.listView);
-        dbHelper = new FeedReaderDbHelper(this);
 
     }
     @Override
@@ -37,20 +37,17 @@ public class ShowDatabaseActivity extends Activity {
     }
 
     private void displayData() {
-        dataBase = dbHelper.getWritableDatabase();
-        Cursor mCursor = dataBase.rawQuery("SELECT * FROM "+ FeedReaderContract.FeedEntry.TABLE_NAME,null);
-
-        data.clear();
+        Cursor mCursor = dbHelper.fetchAllItems();
+        datal.clear();
         id.clear();
 
         if (mCursor.moveToFirst()) {
             do {
-                data.add(mCursor.getString(mCursor.getColumnIndex(FeedReaderContract.FeedEntry.TABLE_NAME)));
-                id.add(mCursor.getString(mCursor.getColumnIndex(FeedReaderContract.FeedEntry._ID)));
+                datal.add(mCursor.getString(mCursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_NAME_DATA)));
             } while(mCursor.moveToNext());
         }
 
-        DisplayAdapter disadpt = new DisplayAdapter(ShowDatabaseActivity.this, data, id);
+        DisplayAdapter disadpt = new DisplayAdapter(ShowDatabaseActivity.this, datal);
         userList.setAdapter(disadpt);
         mCursor.close();
     }

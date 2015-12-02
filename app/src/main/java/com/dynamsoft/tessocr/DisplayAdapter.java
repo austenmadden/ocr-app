@@ -18,7 +18,7 @@ public class DisplayAdapter extends BaseAdapter{
     private ArrayList<String> data;
 
 
-    public DisplayAdapter(Context c, ArrayList<String> inData,ArrayList<String> inId) {
+    public DisplayAdapter(Context c, ArrayList<String> inData) {
         this.mContext = c;
         this.data=inData;
 
